@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+	<link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+	<!-- partial:index.partial.html -->
+	<!-- multistep form -->
+	<form id="msform" action="./form/form.php" method="post">
+		<!-- progressbar -->
+		<ul id="progressbar">
+			<li class="active">Datos de Usuario</li>
+			<li>Social Profiles</li>
+			<li>Personal Details</li>
+		</ul>
+		<!-- fieldsets -->
+		<fieldset>
+			<h2 class="fs-title">Regístrate como usuario</h2>
+			<h3 class="fs-subtitle">Primer paso...</h3>
+			<input type="text" name="email" placeholder="Email" required/>
+			<input type="number" name="discord" placeholder="Discord ID" required/>
+			<label for="curso">Elige tu grado:</label>
+			<select name="curso" id="curso" required>
+				<option value="1">DAM</option>
+				<option value="2">DAW</option>
+			</select>
+			<br>
+			<br>
+			<label for="year">¿En qué curso estás?:</label>
+			<select name="year" id="year" required>
+				<option value="1">1º</option>
+				<option value="2">2º</option>
+			</select>
+			<br>
+			<br>
+			<input type="button" name="next" class="next action-button" value="Siguiente" />
+		</fieldset>
+		<fieldset>
+			<h2 class="fs-title">Redes Sociales</h2>
+			<h3 class="fs-subtitle">Diferentes redes sociales que quieras compartir</h3>
+			<input type="text" name="twitter" placeholder="Twitter" />
+			<input type="text" name="github" placeholder="GitHub" />
+			<input type="text" name="instagram" placeholder="Instagram" />
+			<input type="button" name="previous" class="previous action-button" value="Anterior" />
+			<input type="button" name="next" class="next action-button" value="Siguiente" />
+		</fieldset>
+		<fieldset>
+			<h2 class="fs-title">Sobre Ti</h2>
+			<h3 class="fs-subtitle">¿Quieres contarle algo sobre ti a la clase?</h3>
+			<input type="text" name="fname" placeholder="Nombre" />
+			<input type="text" name="lname" placeholder="Apellido" />
+			<input type="text" name="phone" placeholder="Teléfono" />
+			<textarea name="description" placeholder="Descripción"></textarea>
+			<input type="button" name="previous" class="previous action-button" value="Anterior" />
+			<a class="submit action-button" target="_top">Enviar</a>
+		</fieldset>
+	</form>
+	<!-- partial -->
+	<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<script src='//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+	<script src="./script.js"></script>
+
+</body>
+
+<script>
+	//If form is not fully filled, don't submit and show error
+	$(document).ready(function() {
+		$(".submit").click(function() {
+			var error = "";
+			if ($("#msform input").val() == "") {
+				error += "Please fill out all fields. ";
+			}
+			if (error != "") {
+				alert(error);
+				return false;
+			} else {
+				$("form").submit();
+			}
+		});
+	});
+</script>
+
+</html>
