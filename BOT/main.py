@@ -12,8 +12,8 @@ Debug.Info("Connecting...")
 client = commands.Bot(case_insensitive = True, command_prefix = ConfigData["Prefix"], intents = nextcord.Intents.all())
 client.remove_command("help")
 
-try: client.load_extension("weather")
-except Exception as Error: Debug.Error(f"An error has occured while loading the weather.py\n{Error}")
+try: client.load_extension("commands")
+except Exception as Error: Debug.Error(f"An error has occured while loading the commands.py\n{Error}")
 
 @client.event
 async def on_ready():
@@ -24,19 +24,19 @@ async def on_ready():
 @client.command()
 async def load(ctx):
 	if ctx.author.id in JSON.Read("config.json")["Whitelist"]:
-		try: client.load_extension("weather"); await ctx.send(f"> Loaded successfully!")
+		try: client.load_extension("commands"); await ctx.send(f"> Loaded successfully!")
 		except Exception as Error: await ctx.send(f"> **An error has occurred while loading: ```\n{Error}```")
 
 @client.command()
 async def reload(ctx):
 	if ctx.author.id in JSON.Read("config.json")["Whitelist"]:
-		try: client.reload_extension("weather"); await ctx.send(f"> Reloaded successfully!")
+		try: client.reload_extension("commands"); await ctx.send(f"> Reloaded successfully!")
 		except Exception as Error: await ctx.send(f"> **An error has occurred while reloading: ```\n{Error}```")
 
 @client.command()
 async def unload(ctx):
 	if ctx.author.id in JSON.Read("config.json")["Whitelist"]:
-		try: client.unload_extension("weather"); await ctx.send(f"> Unloaded successfully!")
+		try: client.unload_extension("commands"); await ctx.send(f"> Unloaded successfully!")
 		except Exception as Error: await ctx.send(f"> **An error has occurred while unloading: ```\n{Error}```")
 
 client.run(ConfigData["BotToken"]), PurgeCache()
