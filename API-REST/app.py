@@ -4,8 +4,18 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/api/discord/members', methods=['POST'])
+@app.route('/api/discord/members/post', methods=['POST'])
 def add_member():
+    Token = request.args.get('token')
+    #token in config.json
+    with open('config.json') as f:
+        data = json.load(f)
+        token = data['token']
+    if Token == token:
+        pass
+    else:
+        #status code 401
+        return jsonify({'message': 'Unauthorized'}), 401
     json_data = open('db/db.json').read()
     data = json.loads(json_data)
     new_member = {
