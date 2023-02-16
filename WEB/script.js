@@ -86,3 +86,20 @@ $(".previous").click(function () {
         }
     );
 });
+
+// only submit form if all fields are filled else alert user
+$(".submit").click(function () {
+    var empty = false;
+    var emptyFields = "";
+    $("input").each(function () {
+        if ($(this).val() === "") {
+            empty = true;
+            emptyFields += $(this).attr("placeholders") + ", ";
+        }
+    });
+    if (empty) {
+        alert("Please fill in the following fields: " + emptyFields);
+    } else {
+        $("form").submit();
+    }
+});

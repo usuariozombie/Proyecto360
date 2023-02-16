@@ -67,22 +67,4 @@
 
 </body>
 
-<script>
-	//If form is not fully filled, don't submit and show error
-	$(document).ready(function() {
-		$(".submit").click(function() {
-			var error = "";
-			if ($("#msform input").val() == "") {
-				error += "Please fill out all fields. ";
-			}
-			if (error != "") {
-				alert(error);
-				return false;
-			} else {
-				$("form").submit();
-			}
-		});
-	});
-</script>
-
 </html>
