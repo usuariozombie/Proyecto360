@@ -1,0 +1,8 @@
+{
+	"BotToken": "your_token",
+	"Permissions": 8,
+	"Prefix": "-",
+	"Whitelist": [
+		"YOURTOKEN"
+	]
+}
