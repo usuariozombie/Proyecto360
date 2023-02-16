@@ -44,7 +44,7 @@ header('Location: ../index.html');
 
 //post to the web api
 
-$ch = curl_init('127.0.0.1:4000/api/discord/members');
+$ch = curl_init('127.0.0.1:4000/api/discord/members/post?token=insert_token_here');
 
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 
