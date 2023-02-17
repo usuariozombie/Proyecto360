@@ -35,6 +35,14 @@ def add_member():
 
 @app.route('/api/discord/members/<int:id>', methods=['GET'])
 def get_member(id):
+    Token = request.args.get('token')
+    #token in config.json
+    token = JSON.Read('../config.json')['token']
+    if Token == token:
+        pass
+    else:
+        #status code 401
+        return jsonify({'message': 'Unauthorized'}), 401
     data = JSON.Read('../db/db.json')
     for id in data:
         if id == id:
@@ -45,6 +53,14 @@ def get_member(id):
 
 @app.route('/api/discord/members')
 def get_members():
+    Token = request.args.get('token')
+    #token in config.json
+    token = JSON.Read('../config.json')['token']
+    if Token == token:
+        pass
+    else:
+        #status code 401
+        return jsonify({'message': 'Unauthorized'}), 401
     data = JSON.Read('../db/db.json')
     return jsonify(data)
 
