@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-import json
+from utils import JSON
 
 app = Flask(__name__)
 
@@ -8,16 +8,13 @@ app = Flask(__name__)
 def add_member():
     Token = request.args.get('token')
     #token in config.json
-    with open('config.json') as f:
-        data = json.load(f)
-        token = data['token']
+    token = JSON.Read('../config.json')['token']
     if Token == token:
         pass
     else:
         #status code 401
         return jsonify({'message': 'Unauthorized'}), 401
-    json_data = open('db/db.json').read()
-    data = json.loads(json_data)
+    data = JSON.Read('../db/db.json')
     new_member = {
         request.json['discord']: {
             'email': request.json['email'],
@@ -32,16 +29,13 @@ def add_member():
             'description': request.json['description']
         }
     }
-    print(new_member)
     data.update(new_member)
-    with open('db/db.json', 'w') as f:
-        json.dump(data, f, indent=4)
-    return jsonify(new_member)
+    JSON.Write('../db/db.json', data)
+    return jsonify({'message': 'Member added'})
 
 @app.route('/api/discord/members/<int:id>', methods=['GET'])
 def get_member(id):
-    json_data = open('db/db.json').read()
-    data = json.loads(json_data)
+    data = JSON.Read('../db/db.json')
     for id in data:
         if id == id:
             return jsonify(data[id])
@@ -51,8 +45,7 @@ def get_member(id):
 
 @app.route('/api/discord/members')
 def get_members():
-    json_data = open('db/db.json').read()
-    data = json.loads(json_data)
+    data = JSON.Read('../db/db.json')
     return jsonify(data)
 
 
