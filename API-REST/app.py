@@ -3,12 +3,13 @@ from utils import JSON
 
 app = Flask(__name__)
 
-Token = request.args.get('token')
+
 #token in config.json
 token = JSON.Read('../config.json')['token']
 
 @app.route('/api/discord/members/post', methods=['POST'])
 def add_member():
+    Token = request.args.get('token')
     if Token == token:
         pass
     else:
@@ -35,6 +36,7 @@ def add_member():
 
 @app.route('/api/discord/members/<int:id>', methods=['GET'])
 def get_member(id):
+    Token = request.args.get('token')
     if Token == token:
         pass
     else:
@@ -50,6 +52,7 @@ def get_member(id):
 
 @app.route('/api/discord/members')
 def get_members():
+    Token = request.args.get('token')
     if Token == token:
         pass
     else:
