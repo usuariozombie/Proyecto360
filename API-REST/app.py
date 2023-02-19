@@ -37,22 +37,22 @@ def add_member():
     }), 200)
 
 
-@app.route('/members/<int:id>', methods=['GET'])
-def members(id):
+@app.route('/members/<int:userid>', methods=['GET'])
+def members(userid):
     if flask.request.args.get("token") != Token:
-        return flask.make_response(flask.jsonify({"success": False, "message": "No valid token provided."}), 498)
-
+        return flask.make_response(flask.jsonify({"success": False, "message": "No data provided for stat."}), 498)
+    
     data = JSON.Read('../db/db.json')
 
     for id in data:
-        if id == id:
+        if id == str(userid):
             return flask.jsonify(data[id]), 200
-        else:
-            return flask.make_response(flask.jsonify({
-                "success": False,
-                "message": "Member not found!",
-                "data": None
-            }), 404)
+
+    return flask.make_response(flask.jsonify({
+        "success": False,
+        "message": "Member not found!",
+        "data": None
+    }), 404)
     
 
 
