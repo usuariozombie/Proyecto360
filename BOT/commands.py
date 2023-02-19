@@ -26,7 +26,23 @@ class Commands(Cog):
 			url = f"http://127.0.0.1:4000/api/discord/members/{user.id}"
 			response = requests.get(url)
 			data = response.json()
-			embed = Embed(title = f"{user}'s profile", description = f"**Name:** {data['fname']}\n**Email:** {data['email']}", color = 0x00ff00)
+			
+			if data['curso'] == '1': 
+				data['curso'] = 'DAM'
+			else:
+				data['curso'] = 'DAW'
+
+			if data['year'] == '1':
+				data['year'] = '1º'
+			elif data['year'] == '2':
+				data['year'] = '2º'
+
+			embed = Embed(
+				title = f"{user}'s profile", 
+				description = f"**Name:** {data['fname']}\n**Email:** {data['email']}\n**Curso:** {data['year']} de {data['curso']}\n",
+				color = 0x00ff00
+			)
+
 			await interaction.response.send_message(embed = embed)
 		except Exception as Error: await interaction.response.send_message(f"> **An error has occurred while checking your profile: ```\n{Error}```")
 
