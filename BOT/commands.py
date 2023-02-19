@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import nextcord, requests
-from nextcord.ext.commands import Cog, command
-from utils import Debug, JSON, now, TextClearer
-from nextcord import Embed, Interaction, SlashOption, slash_command
+from nextcord.ext.commands import Cog
+from utils import Debug
+from nextcord import Embed, Interaction, slash_command
 
 class Commands(Cog):
 
