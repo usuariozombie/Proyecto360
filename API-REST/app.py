@@ -1,67 +1,68 @@
-from flask import Flask, jsonify, request
+import flask
 from utils import JSON
 
-app = Flask(__name__)
+app = flask.Flask(__name__)
 
 
-#token in config.json
-token = JSON.Read('../config.json')['token']
+# token in config.json
+Token = JSON.Read('../config.json')['token']
 
-@app.route('/api/discord/members/post', methods=['POST'])
+
+@app.route('/post', methods=['POST'])
 def add_member():
-    Token = request.args.get('token')
-    if Token == token:
-        pass
-    else:
-        #status code 401
-        return jsonify({'message': 'Unauthorized'}), 401
+    if flask.request.args.get("token") != Token:
+        return flask.make_response(flask.jsonify({"success": False, "message": "No data provided for stat."}), 498)
+
     data = JSON.Read('../db/db.json')
-    new_member = {
-        request.json['discord']: {
-            'email': request.json['email'],
-            'curso': request.json['curso'],
-            'year': request.json['year'],
-            'github': request.json['github'],
-            'twitter': request.json['twitter'],
-            'instagram': request.json['instagram'],
-            'fname': request.json['fname'],
-            'lname': request.json['lname'],
-            'phone': request.json['phone'],
-            'description': request.json['description']
+    data[new_member] = {
+        request.json["discord"]: {
+            "email": request.json["email"],
+            "curso": request.json["curso"],
+            "year": request.json["year"],
+            "github": request.json["github"],
+            "twitter": request.json["twitter"],
+            "instagram": request.json["instagram"],
+            "fname": request.json["fname"],
+            "lname": request.json["lname"],
+            "phone": request.json["phone"],
+            "description": request.json["description"]
         }
     }
-    data.update(new_member)
-    JSON.Write('../db/db.json', data)
-    return jsonify({'message': 'Member added'})
 
-@app.route('/api/discord/members/<int:id>', methods=['GET'])
-def get_member(id):
-    Token = request.args.get('token')
-    if Token == token:
-        pass
-    else:
-        #status code 401
-        return jsonify({'message': 'Unauthorized'}), 401
+    JSON.Write('../db/db.json', data)
+    return flask.make_response(flask.jsonify({
+        "success": True,
+        "message": "Member registered!",
+        "data": new_member
+    }), 200)
+
+
+@app.route('/members/<int:id>', methods=['GET'])
+def members(id):
+    if flask.request.args.get("token") != Token:
+        return flask.make_response(flask.jsonify({"success": False, "message": "No valid token provided."}), 498)
+
     data = JSON.Read('../db/db.json')
+
     for id in data:
         if id == id:
-            return jsonify(data[id])
+            return flask.jsonify(data[id]), 200
         else:
-            return jsonify({'message': 'Member not found'})
+            return flask.make_response(flask.jsonify({
+                "success": False,
+                "message": "Member not found!",
+                "data": None
+            }), 404)
+    
 
 
-@app.route('/api/discord/members')
+
+@app.route('/allmembers')
 def get_members():
-    Token = request.args.get('token')
-    if Token == token:
-        pass
-    else:
-        #status code 401
-        return jsonify({'message': 'Unauthorized'}), 401
-    data = JSON.Read('../db/db.json')
-    return jsonify(data)
+    if flask.request.args.get("token") != Token:
+        return flask.make_response(flask.jsonify({"success": False, "message": "No data provided for stat."}), 498)
+    return flask.make_response(flask.jsonify(JSON.Read("../db/db.json")), 200)
 
 
 if __name__ == "__main__":
     app.run(debug=True, port=4000)
-    
