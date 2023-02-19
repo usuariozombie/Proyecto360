@@ -1,6 +1,8 @@
 {
 	"BotToken": "your_token",
 	"Permissions": 8,
+	"WelcomeChannel" : "welcome_channel_id",
+	"APIToken" : "api_token",
 	"Prefix": "-",
 	"Whitelist": [
 		"YOURTOKEN"
