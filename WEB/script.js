@@ -94,11 +94,11 @@ $(".submit").click(function () {
     $("input").each(function () {
         if ($(this).val() === "") {
             empty = true;
-            emptyFields += $(this).attr("placeholders") + ", ";
+            emptyFields += $(this).attr("placeholder") + ", ";
         }
     });
     if (empty) {
-        alert("Please fill in the following fields: " + emptyFields);
+        alert("Por favor rellena los siguientes campos: " + emptyFields);
     } else {
         $("form").submit();
     }
