@@ -120,7 +120,6 @@
 					  var userID = response.id;
 					  // Fill the Discord ID input and disable it
 					  $('input[name="discord"]').val(userID);
-					  $('input[name="discord"]').attr('disabled', 'disabled');
 					},
 					error: function(xhr, status, error) {
 					  console.log(error);
