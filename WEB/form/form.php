@@ -32,6 +32,12 @@ $data = array(
 
 // encode the array to json
 
+if ($discord == "") {
+    header('Location: ../index.html');
+    die();
+    exit();
+}
+
 $json = json_encode($data);
 
 // save the json to a file
@@ -44,7 +50,7 @@ header('Location: ../index.html');
 
 //post to the web api
 
-$ch = curl_init('127.0.0.1:4000/api/discord/members/post?token=insert_token_here');
+$ch = curl_init('127.0.0.1:4000/post?token=insert_token_here');
 
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 
@@ -61,6 +67,10 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 );
 
 $result = curl_exec($ch);
+
+//alert the user that the form was sent
+
+echo "<script>alert('¡Formulario enviado con éxito!');</script>";
 
 curl_close($ch);
 
