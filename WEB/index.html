@@ -2,11 +2,10 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
+	<meta charset="UTF-8" />
 	<title>Discord Bot - Form</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-	<link rel="stylesheet" href="./style.css">
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" />
+	<link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
@@ -22,30 +21,37 @@
 		<fieldset>
 			<h2 class="fs-title">Regístrate como usuario</h2>
 			<h3 class="fs-subtitle">Primer paso...</h3>
-			<input type="text" name="email" placeholder="Email" required/>
-			<input type="number" name="discord" placeholder="Discord ID" required/>
+			<input type="hidden" name="discord" placeholder="Primero inicia sesión en Discord" required readonly />
+			<button style="border: none; background-color: transparent" class="discord-login">
+				<img class="discordImg" src="./src/disc.png" alt="Discord" width="210" />
+			</button>
+			<br />
+			<br />
 			<label for="curso">Elige tu grado:</label>
 			<select name="curso" id="curso" required>
 				<option value="1">DAM</option>
 				<option value="2">DAW</option>
 			</select>
-			<br>
-			<br>
+			<br />
+			<br />
 			<label for="year">¿En qué curso estás?:</label>
 			<select name="year" id="year" required>
 				<option value="1">1º</option>
 				<option value="2">2º</option>
 			</select>
-			<br>
-			<br>
+			<br />
+			<br />
 			<input type="button" name="next" class="next action-button" value="Siguiente" />
 		</fieldset>
 		<fieldset>
 			<h2 class="fs-title">Redes Sociales</h2>
-			<h3 class="fs-subtitle">Diferentes redes sociales que quieras compartir</h3>
-			<input type="text" name="twitter" placeholder="Twitter" />
-			<input type="text" name="github" placeholder="GitHub" />
-			<input type="text" name="instagram" placeholder="Instagram" />
+			<h3 class="fs-subtitle">
+				Diferentes redes sociales que quieras compartir (LINKS)
+			</h3>
+			<input type="email" name="email" placeholder="Email" required />
+			<input type="text" name="twitter" placeholder="Twitter (LINK)" />
+			<input type="text" name="github" placeholder="GitHub (LINK)" />
+			<input type="text" name="instagram" placeholder="Instagram (LINK)" />
 			<input type="button" name="previous" class="previous action-button" value="Anterior" />
 			<input type="button" name="next" class="next action-button" value="Siguiente" />
 		</fieldset>
@@ -61,10 +67,81 @@
 		</fieldset>
 	</form>
 	<!-- partial -->
-	<script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-	<script src='//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script src="./script.js"></script>
+	<script>
+		$(document).ready(function () {
+			$(".discord-login").on("click", function () {
+				discordLogin();
+			});
 
+			function discordLogin() {
+				// Open Discord login page in a new window
+				var authWindow = window.open(
+					"https://discord.com/api/oauth2/authorize?client_id=your_client_id_here&redirect_uri=your_redirect_uri_here",
+					"Discord Login",
+					"width=800,height=600"
+				);
+
+				// Polling for the authorization code in the URL
+				var timer = setInterval(function () {
+					try {
+						var searchParams = new URLSearchParams(
+							authWindow.location.search
+						);
+						var code = searchParams.get("code");
+						if (code) {
+							clearInterval(timer);
+							authWindow.close();
+							exchangeAuthorizationCodeForToken(code);
+						}
+					} catch (error) {
+						// Do nothing
+					}
+				}, 500);
+			}
+
+			function exchangeAuthorizationCodeForToken(code) {
+				// Make a request to exchange the authorization code for an access token
+				$.ajax({
+					url: "https://discordapp.com/api/oauth2/token",
+					method: "POST",
+					data: {
+						client_id: "client_id",
+						client_secret: "client_secret",
+						grant_type: "authorization_code",
+						code: code,
+						redirect_uri: "https://usuariozombie.com/app360/auth/discord",
+						scope: "identify",
+					},
+					success: function (response) {
+						var token = response.access_token;
+						// Make a request to Discord API to get the user ID
+						$.ajax({
+							url: "https://discordapp.com/api/users/@me",
+							headers: {
+								Authorization: "Bearer " + token,
+							},
+							success: function (response) {
+								var userID = response.id;
+								// Fill the Discord ID input and disable it
+								$('input[name="discord"]').val(userID);
+								//alert that the user is logged in
+								alert("¡Has iniciado sesión en Discord!");
+							},
+							error: function (xhr, status, error) {
+								console.log(error);
+							},
+						});
+					},
+					error: function (xhr, status, error) {
+						console.log(error);
+					},
+				});
+			}
+		});
+	</script>
 </body>
 
 </html>
