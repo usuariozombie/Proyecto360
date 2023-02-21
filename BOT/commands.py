@@ -58,8 +58,12 @@ class Commands(Cog):
 				description = f"**Nombre:** {data['fname']}\n**Apellidos:** {data['lname']}\n\n**Email:** {data['email']}\n**Teléfono:** {data['phone']}\n\n**Curso:** {data['year']} de {data['curso']}\n\n**Redes Sociales:** [<:github:1076872412982939718>]({data['github']}) | [<:twitter:1076872496189542500>]({data['twitter']}) | [<:instagram:1076872763467370586>]({data['instagram']})\n\n**Sobre mí:** {data['description']}",
 				color = 0x00ff00
 			)
-			embed.set_author(name = f"{user.name}#{user.discriminator}", icon_url = user.avatar.url)
-			embed.set_thumbnail(url = user.avatar.url)
+			if user.avatar == None:
+				embed.set_author(name = f"{user.name}#{user.discriminator}", icon_url = user.default_avatar.url)
+				embed.set_thumbnail(url = user.default_avatar.url)
+			else:
+				embed.set_author(name = f"{user.name}#{user.discriminator}", icon_url = user.avatar.url)
+				embed.set_thumbnail(url = user.avatar.url)
 			embed.set_footer(text = "Solicitado por " + interaction.user.name + "#" + interaction.user.discriminator + " · " + "Entregado por http://usuariozombie.com", icon_url = interaction.user.avatar.url)
 
 			await interaction.response.send_message(embed = embed)
