@@ -12,22 +12,24 @@ Token = JSON.Read('../config.json')['token']
 def add_member():
     if flask.request.args.get("token") != Token:
         return flask.make_response(flask.jsonify({"success": False, "message": "No data provided for stat."}), 498)
-
+    
     data = JSON.Read('../db/db.json')
-    data[new_member] = {
-        request.json["discord"]: {
-            "email": request.json["email"],
-            "curso": request.json["curso"],
-            "year": request.json["year"],
-            "github": request.json["github"],
-            "twitter": request.json["twitter"],
-            "instagram": request.json["instagram"],
-            "fname": request.json["fname"],
-            "lname": request.json["lname"],
-            "phone": request.json["phone"],
-            "description": request.json["description"]
+    new_member = {
+        flask.request.json["discord"]: {
+            "email": flask.request.json["email"],
+            "curso": flask.request.json["curso"],
+            "year": flask.request.json["year"],
+            "github": flask.request.json["github"],
+            "twitter": flask.request.json["twitter"],
+            "instagram": flask.request.json["instagram"],
+            "fname": flask.request.json["fname"],
+            "lname": flask.request.json["lname"],
+            "phone": flask.request.json["phone"],
+            "description": flask.request.json["description"]
         }
     }
+    
+    data.update(new_member)
 
     JSON.Write('../db/db.json', data)
     return flask.make_response(flask.jsonify({
