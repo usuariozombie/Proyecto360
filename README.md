@@ -27,3 +27,35 @@ PROYECTO360
 └───README.md
 
 ```
+
+## Requisitos para el despliegue de la aplicación
+
+¡Necesitas tener instalado [Python](https://www.python.org/downloads/) y [pip](https://pip.pypa.io/en/stable/) para poder desplegar la aplicación!
+
+Necesitas además tener instalados los siguientes módulos:
+
+```bash
+pip install nextcord
+```
+```bash
+pip install flask
+```
+```bash
+pip install discord-py-slash-command
+```
+
+Los requisitos para desplegar la web son:
+
+- Instalar XAMPP
+- Poner la web en C:\xampp\htdocs
+- Iniciar apache desde XAMPP
+
+Tras desplegar la web deberás poner en funcionamiento la API y el Bot:
+
+- Configurar el archivo config.json de la API
+- Crear una aplicación en Discord y un bot en ella https://discord.com/developers/applications
+- Configurar el archivo config.json del Bot
+- Meter al Bot en tu servidor
+- Rellenar el formulario web que has desplegado (deberán hacerlos todos aquellos que quieran un perfil)
+
+Si necesita cualquier cosa contacte conmigo en Discord a través de Usuariozombie#9110
