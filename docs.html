@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>
+		Documentación de la Web de Registro de Usuarios de Discord Bot
+	</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+		integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+	<!--favicon-->
+	<link rel="icon" href="https://images-ext-2.discordapp.net/external/9mhyZUdA5ffY8XPbHguShIIoPDlwDHlPadgVsRA8y9Q/%3Fsize%3D1024/https/cdn.discordapp.com/avatars/1072951610466115754/75e90be28837b3250e10eeed4f671cfd.png?width=468&height=468" type="image/x-icon" />
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">Documentación APP360</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+			aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="#web">WEB-APP360</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#bot">BOT-APP360</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#api">API-REST</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<h1 class="text-center">Documentación APP360</h1>
+	<br>
+	<br>
+	<div class="container bg-light p-3 rounded" id="web">
+		<h2>Documentación del formulario web</h2>
+		<br>
+		<nav class="nav nav-tabs">
+			<a class="nav-item nav-link active" data-toggle="tab" href="#inicio">Inicio</a>
+			<a class="nav-item nav-link" data-toggle="tab" href="#perfil">Creando el perfil</a>
+			<a class="nav-item nav-link" data-toggle="tab" href="#script">Script</a>
+			<a class="nav-item nav-link" data-toggle="tab" href="#faq">Preguntas Frecuentes</a>
+			<a class="nav-item nav-link" data-toggle="tab" href="#conclusion">Conclusión</a>
+		</nav>
+		<div class="tab-content mt-3">
+			<div class="tab-pane fade show active" id="inicio">
+				<h2>Web de Registro de Usuarios</h2>
+				<p>
+					La Web de Registro de Usuarios de Discord Bot es una aplicación web
+					diseñada para permitir a los usuarios registrarse y compartir
+					información sobre ellos mismos, incluyendo sus perfiles de redes
+					sociales, información de contacto y una breve descripción personal.
+					El registro se realiza a través de la plataforma de autenticación de
+					Discord, lo que permite a los usuarios iniciar sesión en la
+					aplicación de forma segura y rápida.
+				</p>
+
+				<h3>Instrucciones de configuración</h3>
+				<ol>
+					<li>
+						Descargue el código fuente de la aplicación y colóquelo en un
+						servidor web que admita PHP.
+					</li>
+					<li>
+						Cree una nueva aplicación Discord en el portal de desarrolladores
+						de Discord.
+					</li>
+					<li>
+						Copie el Client ID y el Client Secret de la aplicación Discord y
+						péguelos en los campos correspondientes en el script del html.
+					</li>
+					<li>
+						Configure la URL de redireccionamiento en la sección "OAuth2" de
+						la página de configuración de la aplicación Discord. La URL debe
+						ser la dirección de la página web donde se aloja la aplicación,
+						seguida de /form/form.php.
+					</li>
+					<li>
+						Guarde los cambios y cargue la página de registro de usuarios en
+						su navegador web.
+					</li>
+				</ol>
+			</div>
+
+			<div class="tab-pane fade" id="perfil">
+				<h2>Creando el perfil:</h2>
+				<p>
+					Para crear el perfil en la aplicación, siga los siguientes pasos:
+				</p>
+				<ol>
+					<li>
+						Inicie sesión en la plataforma de autenticación de Discord
+						haciendo clic en el botón "Discord Login" en la página de registro
+						de usuarios.
+					</li>
+					<li>Seleccione su grado y curso.</li>
+					<li>
+						Haga clic en el botón "Siguiente" para continuar con el registro.
+					</li>
+					<li>
+						Proporcione información adicional sobre usted, como sus perfiles
+						de redes sociales, información de contacto y una breve descripción
+						personal.
+					</li>
+					<li>
+						Una vez que haya completado su perfil, haga clic en el botón
+						"Guardar" para guardar su información.
+					</li>
+				</ol>
+			</div>
+
+			<div class="tab-pane fade" id="faq">
+				<h2>Preguntas frecuentes</h2>
+				<br>
+				<h3>¿Cómo puedo actualizar mi perfil?</h3>
+				<p>
+					Para actualizar su perfil, debe volver a iniciar sesión en la
+					plataforma de autenticación de Discord y volver a completar el
+					formulario de registro.
+				</p>
+				<h3>¿Cómo puedo eliminar mi cuenta?</h3>
+				<p>
+					Para eliminar su cuenta, contacte desde su cuenta de Discord con el
+					administrador en el que se está usando el Bot.
+				</p>
+				<h3>¿Cómo puedo contactar al soporte técnico?</h3>
+				<p>
+					Para contactar al soporte técnico, envíe un correo electrónico a
+					app360.sistemas@gmail.com.
+				</p>
+			</div>
+
+			<div class="tab-pane fade" id="script">
+				<div class="row">
+					<div class="col">
+						<h3>Descripción del JavaScript</h3>
+						<p>El JavaScript contiene código que maneja la interacción del usuario con el formulario de
+							registro y la plataforma de autenticación de Discord. El código se divide en dos funciones
+							principales:</p>
+						<ul>
+							<li>discordLogin(): esta función se activa cuando se hace clic en el botón "Discord Login"
+								en la página de registro de usuarios. Abre una ventana emergente que muestra la página
+								de autenticación de Discord, lo que permite al usuario iniciar sesión de forma segura.
+							</li>
+							<li>exchangeAuthorizationCodeForToken(code): esta función se llama después de que el usuario
+								inicia sesión en la plataforma de autenticación de Discord y se le concede un código de
+								autorización. Hace una solicitud a la API de Discord para intercambiar el código de
+								autorización por un token de acceso, que se utiliza para completar el registro de
+								usuario.</li>
+						</ul>
+					</div>
+					<div class="col">
+						<h3>Descripción del archivo PHP</h3>
+						<p>El archivo PHP form.php procesa los datos del formulario de registro y los almacena en una
+							base de datos. También genera el perfil para el usuario y lo envía a la API a través de una
+							solicitud HTTP POST. El archivo se divide en tres secciones principales:</p>
+						<ul>
+							<li>Recuperación de datos: el archivo PHP recupera los datos enviados desde el formulario de
+								registro y los almacena en variables.</li>
+							<li>Validación de datos: el archivo PHP valida los datos del formulario para asegurarse de
+								que se hayan proporcionado todos los campos requeridos y que se hayan ingresado datos
+								válidos.</li>
+							<li>Almacenamiento de datos: el archivo PHP almacena los datos del formulario en una base de
+								datos. Luego, envía la información de acceso a la API a través de una solicitud HTTP
+								POST.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="tab-pane fade" id="conclusion">
+				<div class="row">
+					<div class="col">
+						<h3>Conclusión</h3>
+						<p>La Web de Registro de Usuarios de Discord Bot es una aplicación web útil que permite a los
+							usuarios registrarse y compartir información sobre ellos mismos en un servidor de Discord.
+							La plataforma de autenticación de Discord garantiza que el registro sea seguro y rápido, y
+							el código fuente de la aplicación es fácilmente personalizable para adaptarse a las
+							necesidades de cualquier proyecto. Con la información proporcionada en esta documentación,
+							los usuarios pueden configurar y utilizar la aplicación con facilidad.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="container bg-light p-3 rounded" id="bot">
+		<h2>Documentación del Bot de Discord</h2>
+		<br>
+		<nav class="nav nav-tabs">
+			<a class="nav-item nav-link active" data-toggle="tab" href="#start">Inicio</a>
+			<a class="nav-item nav-link" data-toggle="tab" href="#config">Configuración</a>
+			<a class="nav-item nav-link" data-toggle="tab" href="#comandos">Comandos</a>
+			<a class="nav-item nav-link" data-toggle="tab" href="#personalizacion">Personalización</a>
+			<a class="nav-item nav-link" data-toggle="tab" href="#conclusion2">Conclusión</a>
+		</nav>
+		<div class="tab-content mt-3 d-toggle">
+			<div class="tab-pane fade show active" id="start">
+				<h2>Descripción General del Bot</h2>
+				<p>Este bot es una aplicación de Discord que se ejecuta en Python y utiliza la biblioteca nextcord. El
+					bot está diseñado para interactuar con los usuarios de Discord y proporcionar información sobre los
+					miembros registrados en la aplicación usuariozombie.com.
+				</p>
+			</div>
+			<div class="tab-pane fade" id="config">
+				<h2>Instrucciones de Instalación</h2>
+				<p>Para instalar y ejecutar el bot, siga estos pasos:</p>
+				<ol>
+					<li>Clone o descargue el código del repositorio de GitHub en su máquina local.</li>
+					<li>Instale las dependencias necesarias ejecutando el comando pip install -r requirements.txt en
+						la
+						línea de comando.</li>
+					<li>Cree un archivo config.json y agregue su token de bot de Discord, su token de API de
+						usuariozombie.com, el prefijo del comando que desea utilizar y el ID del canal de bienvenida
+						en
+						su servidor de Discord. También puede agregar una lista blanca de IDs de usuario que tendrán
+						acceso a los comandos de administrador.</li>
+					<li>Ejecute el archivo main.py en la línea de comando para iniciar el bot.</li>
+				</ol>
+			</div>
+			<div class="tab-pane fade" id="config">
+				<h2>Configuración del Bot</h2>
+				<p>Antes de ejecutar el bot, debe configurar algunas opciones en el archivo config.json. Aquí hay
+					una
+					descripción de cada una de las opciones:</p>
+				<ul>
+					<li>BotToken: El token de bot de Discord. Puede obtenerlo en la página de Desarrolladores de
+						Discord.</li>
+					<li>APIToken: El token de API de usuariozombie.com. Puede obtenerlo en la página de
+						usuariozombie.com.</li>
+					<li>Prefix: El prefijo que desea utilizar para los comandos del bot.</li>
+					<li>WelcomeChannel: El ID del canal de bienvenida en su servidor de Discord.</li>
+					<li>Whitelist: Una lista blanca de IDs de usuario que tendrán acceso a los comandos de
+						administrador.</li>
+					<li>Permissions: Las permisos de Discord que desea conceder a su bot. Puede obtener el número de
+						permisos necesario en la página de Desarrolladores de Discord.</li>
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="comandos">
+				<h2>Comandos</h2>
+				<p>El bot tiene varios comandos que se pueden utilizar en Discord. Aquí hay una descripción de cada
+					uno
+					de ellos:</p>
+				<ul>
+					<li>checkprofile: Verifica el perfil de un usuario en usuariozombie.com. Si no se menciona a un
+						usuario, se verifica el perfil del usuario que ejecuta el comando. El comando se puede
+						utilizar
+						en Discord a través de /profile checkprofile [usuario].</li>
+					<li>help: Muestra una lista de los comandos disponibles y su descripción. El comando se puede
+						utilizar en Discord a través de /profile help.</li>
+					<li>load: Carga el módulo commands. Solo los usuarios en la lista blanca pueden utilizar este
+						comando. El comando se puede utilizar en Discord a través de !load.</li>
+					<li>reload: Recarga el módulo commands. Solo los usuarios en la lista blanca pueden utilizar
+						este
+						comando. El comando se puede utilizar en Discord a través de !reload.</li>
+					<li>unload: Descarga el módulo commands. Solo los usuarios en la lista blanca pueden utilizar
+						este
+						comando. El comando se puede utilizar en Discord a través de !unload.</li>
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="personalizacion">
+				<h2>Personalización del Bot</h2>
+				<p>Si desea personalizar el bot, puede agregar más comandos o cambiar los que ya existen. Para
+					agregar
+					un nuevo comando, debe seguir los siguientes pasos:</p>
+				<ul>
+					<li>Agregue una nueva entrada al diccionario de comandos en el archivo "commands.py" con el
+						nombre
+						del comando y la función correspondiente que se debe ejecutar.</li>
+					<li>Actualice el comando "help" con una descripción del nuevo comando.</li>
+					<li>También puede personalizar el mensaje de bienvenida que el bot envía cuando un nuevo usuario
+						se
+						une al servidor. Para hacerlo, siga estos pasos:</li>
+					<ol>
+						<li>Abra el archivo "commands.py"</li>
+						<li>Busque la función "on_member_join" y modifique el mensaje de bienvenida según sus
+							preferencias.</li>
+						<li>Además, puede personalizar la apariencia del bot, como su nombre y su avatar, en la
+							configuración del bot en la página de Desarrolladores de Discord.</li>
+					</ol>
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="conclusion2">
+				<h2>Conclusión</h2>
+				<p>Conclusión
+					Este bot es una aplicación útil para cualquier servidor de Discord ya que permite a los usuarios
+					verificar fácilmente los perfiles de otros miembros registrados además de que brinda privacidad
+					ya
+					que solo los usuarios que estén dentro del servidor podrán acceder a la información de la
+					persona
+					que ella quiera dar, siendo más privado que teniéndolo en tu perfil de discord ya que esto
+					permite
+					que cualquier usuario pueda acceder a ella. Además brinda a los administradores del servidor el
+					control total sobre quién puede utilizar los comandos del bot. Además, es altamente
+					personalizable,
+					lo que permite a los administradores agregar nuevos comandos o modificar los existentes según
+					sea
+					necesario. Si desea utilizar este bot en su servidor de Discord, siga las instrucciones de
+					instalación y personalización proporcionadas en esta documentación.
+				</p>
+
+			</div>
+		</div>
+
+	</div>
+	</div>
+	<br>
+	<br>
+	<!--grey container-->
+	<div class="container bg-light p-3 rounded" id="api">
+		<h2>Documentación de la API</h2>
+		<br>
+		<div class="nav nav-tabs" id="nav-tab" role="tablist">
+			<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#api2" role="tab"
+				aria-controls="nav-home" aria-selected="true">Introducción</a>
+			<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#post" role="tab"
+				aria-controls="nav-profile" aria-selected="false">POST</a>
+			<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#get-member" role="tab"
+				aria-controls="nav-profile" aria-selected="false">GET-MEMBER</a>
+			<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#get-all-members" role="tab"
+				aria-controls="nav-profile" aria-selected="false">GET-ALL-MEMBERS</a>
+		</div>
+		<div class="tab-content mt-3 d-toggle">
+			<div class="tab-pane fade show active" id="api2">
+				<h2>API:</h2>
+				<p>La API de este proyecto tiene como objetivo registrar y obtener información de los miembros de una
+					organización. La API es accesible a través de HTTP y está basada en Flask, un framework de Python. Se
+					debe proporcionar un token para acceder a la API, que se encuentra en el archivo de configuración
+					config.json.</p>
+				<h3>URL base:</h3>
+				<p>La URL base de la API es http://localhost:4000/.</p>
+			</div>
+			<div class="tab-pane fade" id="post">
+				<h4>POST /post</h4>
+				<p>Este recurso permite agregar un nuevo miembro a la organización.</p>
+				<h5>Parámetros:</h5>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>discord</td>
+							<td>string</td>
+							<td>Nombre de usuario de Discord del nuevo miembro.</td>
+						</tr>
+						<tr>
+							<td>email</td>
+							<td>string</td>
+							<td>Dirección de correo electrónico del nuevo miembro.</td>
+						</tr>
+						<tr>
+							<td>curso</td>
+							<td>string</td>
+							<td>Curso actual del nuevo miembro.</td>
+						</tr>
+						<tr>
+							<td>year</td>
+							<td>string</td>
+							<td>Año actual del nuevo miembro.</td>
+						</tr>
+						<tr>
+							<td>github</td>
+							<td>string</td>
+							<td>Nombre de usuario de GitHub del nuevo miembro.</td>
+						</tr>
+						<tr>
+							<td>twitter</td>
+							<td>string</td>
+							<td>Nombre de usuario de Twitter del nuevo miembro.</td>
+						</tr>
+						<tr>
+							<td>instagram</td>
+							<td>string</td>
+							<td>Nombre de usuario de Instagram del nuevo miembro.</td>
+						</tr>
+						<tr>
+							<td>fname</td>
+							<td>string</td>
+							<td>Nombre del nuevo miembro.</td>
+						</tr>
+						<tr>
+							<td>lname</td>
+							<td>string</td>
+							<td>Apellido del nuevo miembro.</td>
+						</tr>
+						<tr>
+							<td>phone</td>
+							<td>string</td>
+							<td>Número de teléfono del nuevo miembro.</td>
+						</tr>
+						<tr>
+							<td>description</td>
+							<td>string</td>
+							<td>Descripción del nuevo miembro.</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<h5>Respuestas:</h5>
+				<ul>
+					<li>200 OK en caso de éxito.</li>
+					<li>498 Token inválido en caso de que el token proporcionado no sea válido.</li>
+				</ul>
+			</div>
+			<div class="tab-pane fade" id="get-member">
+				<h4>GET /members/{userid}</h4>
+				<p>Este recurso permite obtener información de un miembro específico de la organización.</p>
+				<h4>Parámetros</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>userid</td>
+							<td>int</td>
+							<td>ID del miembro a buscar.</td>
+						</tr>
+					</tbody>
+				</table>
+				<h4>Respuestas</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Código</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>200</td>
+							<td>OK en caso de éxito.</td>
+						</tr>
+						<tr>
+							<td>404</td>
+							<td>Not Found en caso de que el miembro no sea encontrado.</td>
+						</tr>
+						<tr>
+							<td>498</td>
+							<td>Token invalido en caso de que el token proporcionado no sea válido.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane fade" id="get-all-members" role="tabpanel" aria-labelledby="get-all-members-tab">
+				<h3>GET /allmembers</h3>
+				<p>Este recurso permite obtener información de todos los miembros de la organización.</p>
+				<h4>Respuestas</h4>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Código</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>200</td>
+							<td>OK en caso de éxito.</td>
+						</tr>
+						<tr>
+							<td>498</td>
+							<td>Token invalido en caso de que el token proporcionado no sea válido.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<footer class="bg-dark py-3 text-white">
+		<br>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 text-center text-md-start">
+					<p>© 2023 ZomBreX · Todos los derechos reservados.</p>
+				</div>
+				<div class="col-md-6 text-center text-md-end">
+					<a href="#">Política de privacidad</a>
+					<span class="text-muted mx-2">|</span>
+					<a href="#">Términos y condiciones</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>
